@@ -1,41 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 import './App.css';
-import * as firebase from 'firebase'
-
-var config = {
-  apiKey: "AIzaSyDgPJDFxLyhdv7eQe5GGTd_wSwhRl2WUfo",
-  authDomain: "textroulette-7c2ac.firebaseapp.com",
-  databaseURL: "https://textroulette-7c2ac.firebaseio.com",
-  projectId: "textroulette-7c2ac",
-  storageBucket: "",
-  messagingSenderId: "440891409035"
-};
-firebase.initializeApp(config);
+import Loginscreen from './Loginscreen'
 
 class App extends Component {
-
-  
+  constructor(props){
+    super(props);
+    this.state={
+      loginPage:[],
+      uploadScreen:[]
+    }
+  }
+  componentWillMount(){
+    var loginPage = [];
+    loginPage.push(<Loginscreen parentContext={this}/>);
+    this.setState({loginPage:loginPage})
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className = "App">
+        {this.state.loginPage}
+        {this.state.uploadScreen}
       </div>
     );
   }
 }
+
+const style = {
+  margin: 15,
+};
+
+if (response.data.code == 200) {
+ console.log("Login successfull");
+ var uploadScreen = [];
+ uploadScreen.push(<UploadScreen appContext = {self.props.appContext}/>)
+ self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
+ }
 
 export default App;
