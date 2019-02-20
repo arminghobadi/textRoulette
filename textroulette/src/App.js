@@ -1,21 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import * as firebase from 'firebase'
-
-var config = {
-  apiKey: "AIzaSyDgPJDFxLyhdv7eQe5GGTd_wSwhRl2WUfo",
-  authDomain: "textroulette-7c2ac.firebaseapp.com",
-  databaseURL: "https://textroulette-7c2ac.firebaseio.com",
-  projectId: "textroulette-7c2ac",
-  storageBucket: "",
-  messagingSenderId: "440891409035"
-};
-firebase.initializeApp(config);
 
 class App extends Component {
-
-  
   render() {
     return (
       <div className="App">
