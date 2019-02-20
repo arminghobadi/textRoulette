@@ -1,42 +1,70 @@
+import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import RaiseButton from 'material-ui/RaiseButton';
-import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaiseButton';
+import Login from './Login';
+import Register from './Register';
 
-class Login extends Component {
+class Loginscreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username:"", password:""
-    }
-  }functio
+      username: '',
+      password: '',
+      loginscreen: [],
+      loginmessage: '',
+      buttonLabel: "Register",
+      isLogin: true
+    };   // That semi-colon should be there but I am not really sure if it should.
+  }
+  componentWillMount() {
+    var loginscreen = [];
+    loginscreen.push(<Login parentContext = {this} appContext = {this.props.parentContext}/>);
+    var loginmessage = "Not Registered yet, please register";
+    this.setState({
+      loginscreen:loginscreen, loginmessage:loginmessage
+    })
+  }
   render() {
-    return(
+    return (
+      <div className="loginscreen">
+        {this.state.loginscreen}
       <div>
-        <MultiThemeProvider>
-          <div>
-            <AppBar title = "Login"/>
-            <TextField hintText = "Enter A Username"
-            floatingLabelText = "Username"
-            onChange = {(event, newValue) => this.setState({username:newValue})}
-            />
-            <br/>
-
-            <Textfield
-            type = "password"
-            hintText = "Enter A Password"
-            floatingLabelText = "Password"
-            onChange = {(event, newValue) => this.setState({password:newValue})}
-            />
-            <br/>
-
-            <RaisedButton
-            label = "Submit"
-            primary = {true}
-            style = {style} onClick = {(event) => this.handleClick(event)}
-            />
+        {this.state.loginmessage}
+       <MuiThemeProvider>
+        <div>
+          <RaisedButton label = {this.state.buttonLabel}
+              primary = {true} style = {style} onClick = {(event) => this.handleClick(event)}
+          />
         </div>
-    );
+     </MuiThemeProvider>
+    </div>
+  );
+  }
+  handleClick(event) {
+    //console.log("event", event);
+    var loginmessage;
+    if (this.state.isLogin) {
+      var loginscreen = [];
+      loginscreen.push(<Register parentContext = {this}/>);
+      loginmessage = "Already registered, go to login";
+      this.setState({
+        loginscreen:loginscreen,
+        loginmessage:loginmessage,
+        buttonLabel:"Login",
+        isLogin:false
+      })
+    }
+  else {
+    var loginscreen = [];
+    loginscreen.push(<Login parentContext = {this}/>);
+    loginmessage = "Not registered yet, please register";
+    this.setState({
+      loginscreen:loginscreen,
+      loginmessage:loginmessage,
+      buttonLabel:"Register",
+      isLogin:true
+    })
+  }
   }
 }
 
@@ -44,33 +72,4 @@ const style = {
   margin: 15,
 };
 
-export default Login;
-
-handleClick(event) {
-  var apiBaseUrl = "https://localhost:4000/api/";
-  var self = this;
-  var payload = {
-    "email":this.state.username, "password":this.state.password
-  }
-  axios.post(apiBaseUrl + 'login', payload).then(function (response) {
-    console.log(response);
-
-    if (response.data.code == 200){
-      console.log("Login successfull");
-      var uploadScreen = [];
-      uploadScreen.push(<UploadScreen appContext = {self.props.appContext}/>)
-      self.props.appContext.setState({loginPage:[], uploadScreen:uploadScreen})
-    }
-    else if (response.data.code == 204) {
-      console.log("Username or Password do not match");
-      alert("Username or Password do not match")
-    }
-    else {
-      console.log("The username does not exist");
-      alert("The username does not exist");
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-}
+export default Loginscreen;
