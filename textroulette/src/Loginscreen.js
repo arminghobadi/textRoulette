@@ -41,7 +41,7 @@ class Loginscreen extends Component {
   );
   }
   handleClick(event) {
-    //console.log("event", event);
+   // console.log("event", event);
     var loginmessage;
     if (this.state.isLogin) {
       var loginscreen = [];
@@ -65,7 +65,7 @@ class Loginscreen extends Component {
       isLogin:true
     })
   }
-  }
+ }
 }
 
 const style = {
