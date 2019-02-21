@@ -85,11 +85,11 @@ export class Main extends React.PureComponent {
 
   render() {
     return (
-      <div>
+      <div style={{ textAlign: 'center', marginTop: '10%'}} >
         {
           this.state.username ? 
-            <div> hey {this.state.username} ! </div> 
-          : <div>
+            <div style={{ marginBottom: '20px' }}> hey <span style={{ color: 'blue' }} >{this.state.username}</span> ! </div> 
+          : <div >
               Please enter your username
               <input onChange={(event) => { this.setState({ tempUsername: event.target.value })}} />
               <button onClick={()=>this.sendUsername()}>
