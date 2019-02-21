@@ -10,7 +10,7 @@ p {
 }
 
 .App {
-  background-color: #1EE494;
+  background-color: #F44336;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -29,7 +29,7 @@ p {
 
 .chatroom h3 {
   font-family: 'Pacifico', cursive;
-  background-color: rgba(30, 228, 148, 0.7);
+  background-color: #B71C1C;
   color: #FFF;
   margin: 0;
   height: 40px;
@@ -48,7 +48,7 @@ p {
 }
 
 .chatroom .chats .chat {
-  background: rgba(255, 255, 255, 0.8);
+  background: #F44336;
   position: relative;
   padding: 5px 13px;
   font-size: 14px;
@@ -58,6 +58,7 @@ p {
   clear: both;
   margin: 10px 0;
   max-width: 200px;
+  color: #FFFFFF;
 }
 
 .chatroom .chats .chat img {
@@ -82,7 +83,7 @@ p {
 .chatroom .input {
   height: 40px;
   width: 100%;
-  background: rgba(30, 228, 148, 0.7);
+  background: #B71C1C;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -91,7 +92,7 @@ p {
 .chatroom .input input[type="text"] {
   background: rgba(255, 255, 255, 0.5);
   outline: 0;
-  border: 2px solid #1EE494;
+  border: 2px solid #B71C1C;
   padding: 0 5px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -100,11 +101,12 @@ p {
   width: 270px;
   box-sizing: border-box;
   font-size: 14px;
+  color: #FFFFFF;
 }
 
 .chatroom .input input[type="submit"] {
   background: transparent;
-  border: 1px solid #1EE494;
+  border: 1px solid #B71C1C;
   height: 30px;
   width: 70px;
   font-size: 14px;
@@ -116,6 +118,6 @@ p {
 }
 
 .chatroom .input input[type="submit"]:hover {
-  background: #1EE494;
+  background: #B71C1C;
   color: #FFF;
 }
